@@ -31,7 +31,7 @@ public class AuthService {
         String password = passwordEncoder.encode(dto.getPassword());
         AuthUser authUser = AuthUser.builder()
                 .userName(dto.getUserName())
-                .password(dto.getPassword())
+                .password(password)
                 .build();
         return authUserRepository.save(authUser);
     }
