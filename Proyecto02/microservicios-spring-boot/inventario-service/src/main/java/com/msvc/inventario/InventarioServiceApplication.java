@@ -24,8 +24,8 @@ public class InventarioServiceApplication {
 			inventarioRepository.save(inventario);
 
 			inventario = new Inventario();
-			inventario.setCodigoSku("iphone_13_PRO");
-			inventario.setCantidad(50);
+			inventario.setCodigoSku("iphone_12_blue");
+			inventario.setCantidad(0);
 			inventarioRepository.save(inventario);
 
 		};
