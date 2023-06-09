@@ -39,7 +39,20 @@
       <recent name="com.msvc.producto.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.OrderServiceApplication">
+  <component name="RunManager" selected="Application.InventarioServiceApplication">
+    <configuration name="InventarioServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.msvc.inventario.InventarioServiceApplication" />
+      <module name="inventario-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.msvc.inventario.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrderServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.msvc.order.OrderServiceApplication" />
       <module name="order-service" />
@@ -68,6 +81,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.InventarioServiceApplication" />
         <item itemvalue="Application.OrderServiceApplication" />
         <item itemvalue="Application.ProductoServiceApplication" />
       </list>
