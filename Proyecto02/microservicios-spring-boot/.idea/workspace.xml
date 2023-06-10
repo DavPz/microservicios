@@ -40,6 +40,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.OrderServiceApplication">
+    <configuration name="DiscoveryServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.discovery.eureka.DiscoveryServerApplication" />
+      <module name="discovery-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.discovery.eureka.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="InventarioServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.msvc.inventario.InventarioServiceApplication" />
       <module name="inventario-service" />
@@ -84,6 +97,7 @@
         <item itemvalue="Application.OrderServiceApplication" />
         <item itemvalue="Application.InventarioServiceApplication" />
         <item itemvalue="Application.ProductoServiceApplication" />
+        <item itemvalue="Application.DiscoveryServerApplication" />
       </list>
     </recent_temporary>
   </component>
