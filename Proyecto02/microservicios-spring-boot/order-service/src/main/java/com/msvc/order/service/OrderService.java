@@ -7,6 +7,8 @@ import com.msvc.order.model.Order;
 import com.msvc.order.model.OrderLineItems;
 import com.msvc.order.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.sleuth.Span;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -26,6 +28,9 @@ public class OrderService {
     @Autowired
     private WebClient.Builder webClientBuilder;
 
+    @Autowired
+    private Tracer tracer;
+
     public void placeOrder(OrderRequest orderRequest){
         Order order = new Order();
         order.setNumeroPedido(UUID.randomUUID().toString());
@@ -40,22 +45,32 @@ public class OrderService {
                 .map(OrderLineItems::getCodigoSku)
                         .collect(Collectors.toList());
 
-        InventarioResponse[] inventarioResponsesArray = webClientBuilder.build().get()
-                        .uri("http://inventario-service/api/inventario",uriBuilder -> uriBuilder.queryParam("codigoSku",codigoSku).build())
-                        .retrieve()
-                        .bodyToMono(InventarioResponse[].class)
-                        .block();
+        Span inventarioSerciveLookup = tracer.nextSpan().name("InventarioSerciveLookup");
+        try (Tracer.SpanInScope isLookUp = tracer.withSpan(inventarioSerciveLookup.start())){
+            inventarioSerciveLookup.tag("call","inventario-service");
 
-        boolean allProductosInStock = Arrays.stream(inventarioResponsesArray)
-                        .allMatch(InventarioResponse::isInStock);
+            InventarioResponse[] inventarioResponsesArray = webClientBuilder.build().get()
+                    .uri("http://inventario-service/api/inventario",uriBuilder -> uriBuilder.queryParam("codigoSku",codigoSku).build())
+                    .retrieve()
+                    .bodyToMono(InventarioResponse[].class)
+                    .block();
 
-        if (allProductosInStock){
+            boolean allProductosInStock = Arrays.stream(inventarioResponsesArray)
+                    .allMatch(InventarioResponse::isInStock);
+
+            if (allProductosInStock){
+                orderRepository.save(order);
+            }else{
+                throw new IllegalArgumentException("El Producto no esta en Stock");
+            }
+
             orderRepository.save(order);
-        }else{
-            throw new IllegalArgumentException("El Producto no esta en Stock");
+
+        }finally {
+            inventarioSerciveLookup.end();
         }
 
-        orderRepository.save(order);
+
     }
 
     private OrderLineItems mapToDto (OrderLineItemsDto orderLineItemsDto){
