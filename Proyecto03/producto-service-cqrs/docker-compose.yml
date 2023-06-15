@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  axonserver:
+    container_name: axonserver
+    image:  axoniq/axonserver
+    ports:
+      - "8024:8024"
+      - "8124:8124"

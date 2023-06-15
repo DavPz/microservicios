@@ -30,7 +30,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/Proyectos/Microservicios/Proyecto02/microservicios-spring-boot",
+    "last_opened_file_path": "E:/Proyectos/Microservicios/Proyecto03/producto-service-cqrs",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -38,6 +38,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.message.service" />
       <recent name="com.servicio.notification.event" />
       <recent name="com.msvc.order.dto" />
       <recent name="com.msvc.producto.dto" />
