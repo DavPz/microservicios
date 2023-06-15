@@ -1,5 +1,6 @@
 package com.msvc.order.service;
 
+import com.msvc.order.config.rabbitmq.Producer;
 import com.msvc.order.dto.InventarioResponse;
 import com.msvc.order.dto.OrderLineItemsDto;
 import com.msvc.order.dto.OrderRequest;
@@ -7,6 +8,7 @@ import com.msvc.order.event.OrderPlacedEvent;
 import com.msvc.order.model.Order;
 import com.msvc.order.model.OrderLineItems;
 import com.msvc.order.repository.OrderRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.sleuth.Span;
 import org.springframework.cloud.sleuth.Tracer;
@@ -22,6 +24,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@Slf4j
 public class OrderService {
 
     @Autowired
@@ -35,6 +38,9 @@ public class OrderService {
 
     @Autowired
     private Tracer tracer;
+
+    @Autowired
+    private Producer producer;
 
     public void placeOrder(OrderRequest orderRequest){
         Order order = new Order();
@@ -65,6 +71,7 @@ public class OrderService {
 
             if (allProductosInStock){
                 orderRepository.save(order);
+                enviarMesajeConRabbitMQ("Notificacion con RabbitMQ, Pedido Ordenado con exito");
                 kafkaTemplate.send("notificationTopic",new OrderPlacedEvent(order.getNumeroPedido()));
             }else{
                 throw new IllegalArgumentException("El Producto no esta en Stock");
@@ -77,6 +84,11 @@ public class OrderService {
         }
 
 
+    }
+
+    private void enviarMesajeConRabbitMQ(String message){
+        log.info("El Mensaje '{}' Ha sido enviado con exito",message);
+        producer.send(message);
     }
 
     private OrderLineItems mapToDto (OrderLineItemsDto orderLineItemsDto){

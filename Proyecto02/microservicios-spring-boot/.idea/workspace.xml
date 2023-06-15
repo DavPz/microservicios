@@ -26,16 +26,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Proyectos/Microservicios/Proyecto01/usuario-service&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "E:/Proyectos/Microservicios/Proyecto02/microservicios-spring-boot",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.servicio.notification.event" />
@@ -43,13 +43,13 @@
       <recent name="com.msvc.producto.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NotificationServiceApplication">
-    <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.api.gateway.ApiGatewayApplication" />
-      <module name="api-gateway" />
+  <component name="RunManager" selected="Application.MessageServiceApplication">
+    <configuration name="InventarioServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.msvc.inventario.InventarioServiceApplication" />
+      <module name="inventario-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.api.gateway.*" />
+          <option name="PATTERN" value="com.msvc.inventario.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -57,12 +57,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InventarioServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.msvc.inventario.InventarioServiceApplication" />
-      <module name="inventario-service" />
+    <configuration name="MessageServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.message.service.MessageServiceApplication" />
+      <module name="message-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.msvc.inventario.*" />
+          <option name="PATTERN" value="com.message.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -110,19 +110,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.MessageServiceApplication" />
       <item itemvalue="Application.NotificationServiceApplication" />
-      <item itemvalue="Application.ApiGatewayApplication" />
       <item itemvalue="Application.InventarioServiceApplication" />
       <item itemvalue="Application.OrderServiceApplication" />
       <item itemvalue="Application.ProductoServiceApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MessageServiceApplication" />
         <item itemvalue="Application.NotificationServiceApplication" />
         <item itemvalue="Application.OrderServiceApplication" />
         <item itemvalue="Application.ProductoServiceApplication" />
         <item itemvalue="Application.InventarioServiceApplication" />
-        <item itemvalue="Application.ApiGatewayApplication" />
       </list>
     </recent_temporary>
   </component>
